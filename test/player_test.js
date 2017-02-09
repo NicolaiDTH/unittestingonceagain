@@ -96,14 +96,38 @@ describe('PLAYER METHODS', function () {
       expect(actual).to.have.length(1);
       expect(actual[0]).to.deep.equal([0, 1]);
     });
-
-    it('should throw an error if no direction is specified', function(){
+    
+    it('should throw an error if no direction is specified', function () {
       var ship = player.ships[0];
       var coordinates = [0, 1];
-
+      
       var handler = function () { placeShip(player, ship, coordinates); };
       expect(handler).to.throw(Error);
       expect(handler).to.throw('You left out the direction! I need that for math!');
+    });
+  });
+});
+
+describe('COMPUTER PLAYER', function () {
+  describe('computerFire', function () {
+    var computerFire = require('../game_logic/player_methods').computerFire;
+    var player;
+    
+    beforeEach(function () {
+      player = {
+        ships: [
+          {
+            locations: [[9, 9]]
+          }
+        ]
+      };
+    });
+    
+    it('should aim at a random location', function () {
+      var ship = player.ships[0];
+      
+      computerFire();
+//      expect(ship).to.......
     });
   });
 });
